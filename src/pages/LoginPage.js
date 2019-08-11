@@ -1,10 +1,11 @@
 import React from "react";
+import LoginForm from "../components/loginForm";
 import Layout from "../components/Layout";
 
 const LoginPage = props => {
   return (
     <Layout>
-      <h1>Login</h1>
+      <LoginForm />
     </Layout>
   );
 };
