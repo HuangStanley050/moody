@@ -16,9 +16,15 @@ const reducer = (state = initialState, action) => {
         loading: true
       };
     case actionType.LOGIN_OKAY:
+      console.log(action.userInfo);
       return {
         ...state,
         isAuth: true,
+        userInfo: {
+          ...state.userInfo,
+          email: action.userInfo.email,
+          uid: action.userInfo.uid
+        },
         loading: false
       };
     default:

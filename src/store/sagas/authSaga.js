@@ -15,7 +15,7 @@ function* authSagaWorker(action) {
     let loginResult = yield axios.post(API.auth, { email, password });
     yield localStorage.setItem("moody-token", loginResult.data.token);
     //console.log(loginResult.data);
-    yield put(login_okay());
+    yield put(login_okay(loginResult.data.userInfo));
   } catch (err) {
     console.log(err);
     yield put(login_fail());
