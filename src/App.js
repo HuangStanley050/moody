@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import { Switch, Route } from "react-router-dom";
+import PrivateRoute from "./components/privateRoute";
 import LandingPage from "./pages";
 import LoginPage from "./pages/LoginPage";
 import MoodsPage from "./pages/MoodsPage";
@@ -11,8 +12,8 @@ function App() {
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <Route path="/login" component={LoginPage} />
-      <Route path="/moods" component={MoodsPage} />
-      <Route path="/addmood" component={AddMoodPage} />
+      <PrivateRoute path="/moods" component={MoodsPage} />
+      <PrivateRoute path="/addmood" component={AddMoodPage} />
     </Switch>
   );
 }

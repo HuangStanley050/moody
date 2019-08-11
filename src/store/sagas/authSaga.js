@@ -8,5 +8,16 @@ export default function* authSagaWatcher() {
   yield takeEvery(actionType.LOGIN_START, authSagaWorker);
 }
 function* authSagaWorker(action) {
-  yield console.log(action.userInfo);
+  //yield console.log(action.userInfo);
+  const email = action.userInfo.email;
+  const password = action.userInfo.password;
+  try {
+    let loginResult = yield axios.post(API.auth, { email, password });
+    yield localStorage.setItem("moody-token", loginResult.data.token);
+    //console.log(loginResult.data);
+    yield put(login_okay());
+  } catch (err) {
+    console.log(err);
+    yield put(login_fail());
+  }
 }

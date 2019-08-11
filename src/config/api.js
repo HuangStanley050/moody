@@ -1,3 +1,3 @@
 export default {
-  auth: "localhost:8000/api/auth/login"
+  auth: "http://localhost:8000/api/auth/login"
 };
