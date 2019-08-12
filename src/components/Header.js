@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import {
   Collapse,
   Navbar,
@@ -51,7 +52,7 @@ class Header extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              {LoginLinks}
+              {this.props.isAuth ? LoginLinks : LogoutLinks}
             </Nav>
           </Collapse>
         </Navbar>
@@ -59,4 +60,9 @@ class Header extends Component {
     );
   }
 }
-export default Header;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.isAuth
+  };
+};
+export default connect(mapStateToProps)(Header);

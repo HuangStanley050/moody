@@ -34,12 +34,14 @@ class Calender extends Component {
   };
   render() {
     return (
-      <DatePicker
-        inline
-        onSelect={this.handleSelect}
-        selected={this.state.startDate}
-        onChange={this.handleChange}
-      />
+      <section>
+        <DatePicker
+          inline
+          onSelect={this.handleSelect}
+          selected={this.state.startDate}
+          onChange={this.handleChange}
+        />
+      </section>
     );
   }
 }
