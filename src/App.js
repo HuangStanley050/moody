@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
+
 import { Switch, Route } from "react-router-dom";
 import PrivateRoute from "./components/privateRoute";
 import LandingPage from "./pages";

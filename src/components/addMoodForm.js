@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import angry_icon from "../assets/angry.png";
 import sad_icon from "../assets/sad.png";
 import happy_icon from "../assets/happy.png";
@@ -63,7 +63,7 @@ const AddMoodForm = props => {
                 check
               >
                 <i>
-                  <img style={icon_style} src={happy_icon} />
+                  <img alt="happy icon" style={icon_style} src={happy_icon} />
                 </i>
                 <Input
                   onChange={handleChange}
@@ -81,7 +81,7 @@ const AddMoodForm = props => {
                 check
               >
                 <i>
-                  <img style={icon_style} src={sad_icon} />
+                  <img alt="sad icon" style={icon_style} src={sad_icon} />
                 </i>
                 <Input
                   onChange={handleChange}
@@ -99,7 +99,7 @@ const AddMoodForm = props => {
                 check
               >
                 <i>
-                  <img style={icon_style} src={scared_icon} />
+                  <img alt="scared icon" style={icon_style} src={scared_icon} />
                 </i>
                 <Input
                   onChange={handleChange}
@@ -117,7 +117,7 @@ const AddMoodForm = props => {
                 check
               >
                 <i>
-                  <img style={icon_style} src={angry_icon} />
+                  <img alt="angry icon" style={icon_style} src={angry_icon} />
                 </i>
                 <Input
                   onChange={handleChange}
@@ -135,7 +135,11 @@ const AddMoodForm = props => {
                 check
               >
                 <i>
-                  <img style={icon_style} src={surprise_icon} />
+                  <img
+                    alt="surprise icon"
+                    style={icon_style}
+                    src={surprise_icon}
+                  />
                 </i>
                 <Input
                   onChange={handleChange}
@@ -153,7 +157,11 @@ const AddMoodForm = props => {
                 check
               >
                 <i>
-                  <img style={icon_style} src={disgust_icon} />
+                  <img
+                    alt="disgust icon"
+                    style={icon_style}
+                    src={disgust_icon}
+                  />
                 </i>
                 <Input
                   onChange={handleChange}
