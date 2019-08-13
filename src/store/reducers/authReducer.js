@@ -1,6 +1,6 @@
 import * as actionType from "../actions/actionTypes";
 const initialState = {
-  isAuth: true,
+  isAuth: false,
   userInfo: {
     email: "",
     uid: ""
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
         loading: true
       };
     case actionType.LOGIN_OKAY:
-      console.log(action.userInfo);
+      //console.log(action.userInfo);
       return {
         ...state,
         isAuth: true,

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { add_mood } from "../store/actions/moodActions";
+import { connect } from "react-redux";
 import angry_icon from "../assets/angry.png";
 import sad_icon from "../assets/sad.png";
 import happy_icon from "../assets/happy.png";
@@ -18,7 +20,7 @@ const useMood = () => {
       [e.target.name]: e.target.value
     });
   };
-  const resetFields = fieldName => {
+  const resetFields = () => {
     setValue({
       ...moodForm,
       mood: "",
@@ -36,16 +38,22 @@ const AddMoodForm = props => {
     width: "50px",
     height: "50px"
   };
-  console.log(moodForm);
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.addMood(moodForm);
+    resetFields();
+  };
+  //console.log(moodForm);
   return (
     <section style={{ width: "500px", margin: "2rem auto" }}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="moods description">Description</Label>
           <Input
             onChange={handleChange}
             type="text"
             name="description"
+            value={moodForm.description}
             id="description"
             placeholder="How do you feel...?"
           />
@@ -175,11 +183,19 @@ const AddMoodForm = props => {
           </div>
         </FormGroup>
         <div className="text-center">
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
         </div>
       </Form>
     </section>
   );
 };
 
-export default AddMoodForm;
+const mapDispatchToProps = dispatch => {
+  return {
+    addMood: mood => dispatch(add_mood(mood))
+  };
+};
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddMoodForm);

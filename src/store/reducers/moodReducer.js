@@ -1,5 +1,9 @@
 const initialState = {
-  loading: false
+  loading: false,
+  data: {
+    day: "",
+    moods: []
+  }
 };
 
 const reducer = (state = initialState, action) => {
