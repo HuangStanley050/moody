@@ -25,7 +25,8 @@ const useMood = () => {
 
 const AddMoodForm = props => {
   const [moodForm, handleChange, resetFields] = useMood();
-  //console.log(moodForm);
+  const selected_style = { border: "3px solid red" };
+  console.log(moodForm);
   return (
     <section style={{ width: "500px", margin: "2rem auto" }}>
       <Form>
@@ -43,7 +44,11 @@ const AddMoodForm = props => {
           <legend>How you feeling</legend>
           <div className="d-flex justify-content-around">
             <FormGroup check>
-              <Label className="btn btn-info" check>
+              <Label
+                style={moodForm.mood === "happy" ? selected_style : null}
+                className="btn btn-info"
+                check
+              >
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -54,7 +59,11 @@ const AddMoodForm = props => {
               </Label>
             </FormGroup>
             <FormGroup check>
-              <Label className="btn btn-info" check>
+              <Label
+                style={moodForm.mood === "sad" ? selected_style : null}
+                className="btn btn-info"
+                check
+              >
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -65,7 +74,11 @@ const AddMoodForm = props => {
               </Label>
             </FormGroup>
             <FormGroup check>
-              <Label className="btn btn-info" check>
+              <Label
+                style={moodForm.mood === "scared" ? selected_style : null}
+                className="btn btn-info"
+                check
+              >
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -76,7 +89,11 @@ const AddMoodForm = props => {
               </Label>
             </FormGroup>
             <FormGroup check>
-              <Label className="btn btn-info" check>
+              <Label
+                style={moodForm.mood === "angry" ? selected_style : null}
+                className="btn btn-info"
+                check
+              >
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -87,7 +104,11 @@ const AddMoodForm = props => {
               </Label>
             </FormGroup>
             <FormGroup check>
-              <Label className="btn btn-info" check>
+              <Label
+                style={moodForm.mood === "surprise" ? selected_style : null}
+                className="btn btn-info"
+                check
+              >
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -98,7 +119,11 @@ const AddMoodForm = props => {
               </Label>
             </FormGroup>
             <FormGroup check>
-              <Label className="btn btn-info" check>
+              <Label
+                style={moodForm.mood === "disgust" ? selected_style : null}
+                className="btn btn-info"
+                check
+              >
                 <Input
                   onChange={handleChange}
                   type="radio"
