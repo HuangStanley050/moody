@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import angry_icon from "../assets/angry.png";
+import sad_icon from "../assets/sad.png";
+import happy_icon from "../assets/happy.png";
+import surprise_icon from "../assets/surprise.png";
+import scared_icon from "../assets/scared.png";
+import disgust_icon from "../assets/disgust.png";
 
 const useMood = () => {
   const [moodForm, setValue] = useState({
@@ -26,6 +32,10 @@ const useMood = () => {
 const AddMoodForm = props => {
   const [moodForm, handleChange, resetFields] = useMood();
   const selected_style = { border: "3px solid red" };
+  const icon_style = {
+    width: "50px",
+    height: "50px"
+  };
   console.log(moodForm);
   return (
     <section style={{ width: "500px", margin: "2rem auto" }}>
@@ -42,13 +52,19 @@ const AddMoodForm = props => {
         </FormGroup>
         <FormGroup tag="fieldset">
           <legend>How you feeling</legend>
-          <div className="d-flex justify-content-around">
+          <div
+            className="d-flex justify-content-around"
+            style={{ height: "94px" }}
+          >
             <FormGroup check>
               <Label
                 style={moodForm.mood === "happy" ? selected_style : null}
                 className="btn btn-info"
                 check
               >
+                <i>
+                  <img style={icon_style} src={happy_icon} />
+                </i>
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -64,6 +80,9 @@ const AddMoodForm = props => {
                 className="btn btn-info"
                 check
               >
+                <i>
+                  <img style={icon_style} src={sad_icon} />
+                </i>
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -79,6 +98,9 @@ const AddMoodForm = props => {
                 className="btn btn-info"
                 check
               >
+                <i>
+                  <img style={icon_style} src={scared_icon} />
+                </i>
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -94,6 +116,9 @@ const AddMoodForm = props => {
                 className="btn btn-info"
                 check
               >
+                <i>
+                  <img style={icon_style} src={angry_icon} />
+                </i>
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -109,6 +134,9 @@ const AddMoodForm = props => {
                 className="btn btn-info"
                 check
               >
+                <i>
+                  <img style={icon_style} src={surprise_icon} />
+                </i>
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -124,6 +152,9 @@ const AddMoodForm = props => {
                 className="btn btn-info"
                 check
               >
+                <i>
+                  <img style={icon_style} src={disgust_icon} />
+                </i>
                 <Input
                   onChange={handleChange}
                   type="radio"
@@ -135,6 +166,9 @@ const AddMoodForm = props => {
             </FormGroup>
           </div>
         </FormGroup>
+        <div className="text-center">
+          <Button>Submit</Button>
+        </div>
       </Form>
     </section>
   );
