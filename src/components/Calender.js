@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
+import { connect } from "react-redux";
+import { get_moods } from "../store/actions/moodActions";
 import "react-datepicker/dist/react-datepicker.css";
 
 const formatTime = today => {
@@ -30,7 +32,9 @@ class Calender extends Component {
   };
 
   handleSelect = date => {
-    console.log(formatTime(date));
+    const timeString = formatTime(date);
+    this.props.getMoods(timeString);
+    //console.log(formatTime(date));
   };
   render() {
     return (
@@ -46,4 +50,11 @@ class Calender extends Component {
   }
 }
 
-export default Calender;
+const mapDispatchToProps = dispatch => ({
+  getMoods: timeString => dispatch(get_moods(timeString))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Calender);

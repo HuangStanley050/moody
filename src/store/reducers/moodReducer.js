@@ -1,3 +1,4 @@
+import * as actionType from "../actions/actionTypes";
 const initialState = {
   loading: false,
   data: {
@@ -7,7 +8,20 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case actionType.ADD_MOOD_START:
+      return {
+        ...state,
+        loading: true
+      };
+    case actionType.ADD_MOOD_OK:
+      return {
+        ...state,
+        loading: false
+      };
+    default:
+      return state;
+  }
 };
 
 export default reducer;
