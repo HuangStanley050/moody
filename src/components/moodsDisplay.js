@@ -7,6 +7,7 @@ const MoodsDisplay = props => {
   const toggle = () => changeStatus(!open);
   // console.log(props.auth);
   // console.log(props.data.data);
+  // props.data.data.moods
   return (
     <section>
       <Button onClick={toggle}>Open</Button>
@@ -15,7 +16,11 @@ const MoodsDisplay = props => {
           <Toast key={mood.timestamp} isOpen={open}>
             <ToastHeader toggle={toggle}>{mood.description}</ToastHeader>
             <ToastBody>
-              <img src={mood.gifUrl} />
+              <img
+                alt="animated"
+                crossOrigin="anonymous"
+                src={mood.image_url}
+              />
             </ToastBody>
           </Toast>
         );
