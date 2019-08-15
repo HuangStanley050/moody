@@ -40,6 +40,7 @@ class Calender extends Component {
     return (
       <section>
         <DatePicker
+          maxDate={new Date()}
           inline
           onSelect={this.handleSelect}
           selected={this.state.startDate}

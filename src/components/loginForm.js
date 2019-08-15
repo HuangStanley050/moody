@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
+import Loader from "./loader";
 import { connect } from "react-redux";
 import { login_start } from "../store/actions/authActions";
 
@@ -38,6 +39,7 @@ const LoginForm = props => {
   return (
     <section style={{ width: "420px", margin: "5rem auto" }}>
       <Container>
+        {props.loading ? <Loader /> : null}
         <Form onSubmit={handleSubmit}>
           <FormGroup>
             <Label for="email">Email</Label>
@@ -77,7 +79,7 @@ const LoginForm = props => {
     </section>
   );
 };
-
+const mapStateToProps = state => ({ loading: state.auth.loading });
 const mapDispatchToProps = dispatch => {
   return {
     login: userInfo => dispatch(login_start(userInfo))
@@ -85,6 +87,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(LoginForm);

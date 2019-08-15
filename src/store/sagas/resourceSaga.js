@@ -1,7 +1,7 @@
 import * as actionType from "../actions/actionTypes";
 import { takeEvery, put, select } from "redux-saga/effects";
 import axios from "axios";
-import { add_mood_okay } from "../actions/moodActions";
+import { add_mood_okay, get_moods_okay } from "../actions/moodActions";
 import API from "../../config/api";
 
 export default function* resourceSagaWatcher() {
@@ -9,7 +9,7 @@ export default function* resourceSagaWatcher() {
   yield takeEvery(actionType.GET_MOODS_START, moodSagaWorker);
 }
 function* moodSagaWorker(action) {
-  yield console.log(action);
+  //yield console.log(action);
   const token = localStorage.getItem("moody-token");
   try {
     let result = yield axios({
@@ -17,7 +17,9 @@ function* moodSagaWorker(action) {
       method: "get",
       url: `${API.moods}${action.timeString}`
     });
-    console.log(result.data.data.result);
+    //console.log("from saga: ", result.data.data.result);
+    const data = result.data.data.result;
+    yield put(get_moods_okay(data));
   } catch (e) {
     console.log(e);
   }

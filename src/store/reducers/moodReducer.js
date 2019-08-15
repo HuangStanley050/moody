@@ -9,6 +9,15 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionType.GET_MOODS_OK:
+      console.log(action.data);
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          moods: [...action.data]
+        }
+      };
     case actionType.ADD_MOOD_START:
       return {
         ...state,

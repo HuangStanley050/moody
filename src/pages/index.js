@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 const Landing = props => {
   return (
     <Layout>
-      <h1>Hello World</h1>
+      <h1>Hot reload working again for some reason: Home</h1>
     </Layout>
   );
 };
