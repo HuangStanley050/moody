@@ -10,7 +10,7 @@ const MoodsPage = props => {
       <Container>
         <h1 className="text-center">Test Moods page</h1>
         <Row>
-          <Col xs="12" md="6">
+          <Col xs="12" md="6" style={{ marginBottom: "2rem" }}>
             <MoodsDisplay />
           </Col>
 

@@ -10,15 +10,17 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.GET_MOODS_OK:
-      console.log(action.data);
+      //console.log(action.data);
       return {
         ...state,
+        loading: false,
         data: {
           ...state.data,
           moods: [...action.data]
         }
       };
     case actionType.ADD_MOOD_START:
+    case actionType.GET_MOODS_START:
       return {
         ...state,
         loading: true

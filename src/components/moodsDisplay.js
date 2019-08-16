@@ -1,21 +1,40 @@
-import React, { useState } from "react";
-import { Button, Toast, ToastBody, ToastHeader } from "reactstrap";
+import React, { useEffect } from "react";
+import { Toast, ToastBody, ToastHeader } from "reactstrap";
 import { connect } from "react-redux";
+import Loader from "./loader";
+import { get_moods } from "../store/actions/moodActions";
+
+const formatTime = today => {
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1; //January is 0!
+
+  let yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  today = dd + "/" + mm + "/" + yyyy;
+
+  return today;
+};
 
 const MoodsDisplay = props => {
-  const [open, changeStatus] = useState(false);
-  const toggle = () => changeStatus(!open);
-  // console.log(props.auth);
-  // console.log(props.data.data);
-  // props.data.data.moods
+  useEffect(() => {
+    const timeString = formatTime(new Date());
+    //console.log(timeString);
+    props.getMoods(timeString);
+  }, []);
+
   return (
     <section>
-      <Button onClick={toggle}>Open</Button>
+      {props.loading ? <Loader /> : null}
       {props.data.data.moods.map(mood => {
         return (
-          <Toast key={mood.timestamp} isOpen={open}>
-            <ToastHeader toggle={toggle}>{mood.description}</ToastHeader>
-            <ToastBody>
+          <Toast key={mood.timestamp}>
+            <ToastHeader>{mood.description}</ToastHeader>
+            <ToastBody style={{ display: "flex", justifyContent: "center" }}>
               <img
                 alt="animated"
                 crossOrigin="anonymous"
@@ -28,11 +47,15 @@ const MoodsDisplay = props => {
     </section>
   );
 };
+const mapDispatchToProps = dispatch => ({
+  getMoods: timeString => dispatch(get_moods(timeString))
+});
 const mapStateToProps = state => ({
   data: state.mood,
+  loading: state.mood.loading,
   auth: state.auth.isAuth
 });
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(MoodsDisplay);
