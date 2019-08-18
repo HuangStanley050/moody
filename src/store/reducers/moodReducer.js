@@ -2,7 +2,6 @@ import * as actionType from "../actions/actionTypes";
 const initialState = {
   loading: false,
   data: {
-    day: "",
     moods: []
   }
 };

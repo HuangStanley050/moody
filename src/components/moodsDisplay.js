@@ -32,7 +32,7 @@ const MoodsDisplay = props => {
       {props.loading ? <Loader /> : null}
       {props.data.data.moods.map(mood => {
         return (
-          <Toast key={mood.timestamp}>
+          <Toast className="mx-auto" key={mood.timestamp}>
             <ToastHeader>{mood.description}</ToastHeader>
             <ToastBody style={{ display: "flex", justifyContent: "center" }}>
               <img

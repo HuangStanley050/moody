@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { Container, Row, Col } from "reactstrap";
 import Calender from "../components/Calender";
 import MoodsDisplay from "../components/moodsDisplay";
+import SelectMood from "../components/selectMood";
 
 const MoodsPage = props => {
   return (
@@ -11,6 +12,7 @@ const MoodsPage = props => {
         <h1 className="text-center">Test Moods page</h1>
         <Row>
           <Col xs="12" md="6" style={{ marginBottom: "2rem" }}>
+            <SelectMood />
             <MoodsDisplay />
           </Col>
 
