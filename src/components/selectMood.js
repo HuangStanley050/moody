@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { FormGroup, Label, Input } from "reactstrap";
 import { filter_moods } from "../store/actions/moodActions";
 
 const SelectMood = props => {
   const [mood, setMood] = useState("happy");
+  useEffect(() => {
+    props.filter(mood);
+  }, [mood]);
   const handleSelect = e => {
     setMood(e.target.value);
-    props.filter(mood);
   };
   return (
     <FormGroup>
