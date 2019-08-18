@@ -14,3 +14,4 @@ export const get_moods_okay = data => ({
   data
 });
 export const get_moods_fail = err => ({ type: actionType.GET_MOODS_FAIL, err });
+export const filter_moods = mood => ({ type: actionType.FILTER, mood });

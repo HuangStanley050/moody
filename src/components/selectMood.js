@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { FormGroup, Label, Input } from "reactstrap";
+import { filter_moods } from "../store/actions/moodActions";
 
 const SelectMood = props => {
   const [mood, setMood] = useState("happy");
   const handleSelect = e => {
-    console.log("before setMood", mood);
     setMood(e.target.value);
-    console.log("after setmood", mood);
+    props.filter(mood);
   };
   return (
     <FormGroup>
@@ -22,5 +23,10 @@ const SelectMood = props => {
     </FormGroup>
   );
 };
-
-export default SelectMood;
+const mapDispatchToProps = dispatch => ({
+  filter: mood => dispatch(filter_moods(mood))
+});
+export default connect(
+  null,
+  mapDispatchToProps
+)(SelectMood);

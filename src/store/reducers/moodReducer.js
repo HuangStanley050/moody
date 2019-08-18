@@ -8,6 +8,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionType.FILTER:
+      console.log(action.mood);
+      return {
+        ...state
+      };
     case actionType.GET_MOODS_OK:
       //console.log(action.data);
       return {
