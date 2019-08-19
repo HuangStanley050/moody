@@ -4,7 +4,7 @@ import { FormGroup, Label, Input } from "reactstrap";
 import { filter_moods } from "../store/actions/moodActions";
 
 const SelectMood = props => {
-  const [mood, setMood] = useState("happy");
+  const [mood, setMood] = useState("");
   useEffect(() => {
     props.filter(mood);
   }, [mood]);
@@ -15,6 +15,7 @@ const SelectMood = props => {
     <FormGroup>
       <Label for="moodSelect">Filter Mood</Label>
       <Input onChange={handleSelect} type="select" value={mood}>
+        <option value="default">Default</option>
         <option value="happy">Happy</option>
         <option value="sad">Sad</option>
         <option value="angry">Angry</option>

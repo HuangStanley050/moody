@@ -5,14 +5,33 @@ const initialState = {
     moods: []
   }
 };
-
+const filterMood = (description, moods) => {
+  let result = moods.filter(item => item.mood === description);
+  return result;
+};
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.FILTER:
-      console.log(action.mood);
-      return {
-        ...state
-      };
+      let filterMoods;
+      if (action.mood === "") {
+        return {
+          ...state
+        };
+      } else if (action.mood === "default") {
+        return {
+          ...state
+        };
+      } else {
+        filterMoods = filterMood(action.mood, state.data.moods);
+        console.log(filterMoods);
+        return {
+          ...state,
+          data: {
+            moods: [...filterMoods]
+          }
+        };
+      }
+
     case actionType.GET_MOODS_OK:
       //console.log(action.data);
       return {
