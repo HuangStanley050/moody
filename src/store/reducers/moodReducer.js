@@ -2,7 +2,8 @@ import * as actionType from "../actions/actionTypes";
 const initialState = {
   loading: false,
   data: {
-    moods: []
+    moods: [],
+    original: []
   }
 };
 const filterMood = (description, moods) => {
@@ -18,15 +19,21 @@ const reducer = (state = initialState, action) => {
           ...state
         };
       } else if (action.mood === "default") {
-        return {
-          ...state
-        };
-      } else {
-        filterMoods = filterMood(action.mood, state.data.moods);
-        console.log(filterMoods);
+        console.log("select default", state.data.original);
         return {
           ...state,
           data: {
+            ...state.data,
+            moods: [...state.data.original]
+          }
+        };
+      } else {
+        filterMoods = filterMood(action.mood, state.data.moods);
+        console.log("after filter", filterMoods);
+        return {
+          ...state,
+          data: {
+            ...state.data,
             moods: [...filterMoods]
           }
         };
@@ -39,7 +46,8 @@ const reducer = (state = initialState, action) => {
         loading: false,
         data: {
           ...state.data,
-          moods: [...action.data]
+          moods: [...action.data],
+          original: [...action.data]
         }
       };
     case actionType.ADD_MOOD_START:
